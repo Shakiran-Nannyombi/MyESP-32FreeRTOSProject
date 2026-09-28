@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "author": "class",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_green",
+      "top": -9.6,
+      "left": 262,
+      "attrs": { "color": "limegreen", "label": "ON" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_red",
+      "top": 86.4,
+      "left": 262,
+      "attrs": { "color": "red", "label": "OFF" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_orange",
+      "top": 182.4,
+      "left": 262,
+      "attrs": { "color": "orange", "label": "PAY" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 14.35,
+      "left": 182.4,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 110.35,
+      "left": 182.4,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 206.35,
+      "left": 182.4,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:2", "r1:1", "green", [ "h0" ] ],
+    [ "r1:2", "led_green:A", "green", [ "h0" ] ],
+    [ "led_green:C", "esp:GND.2", "black", [ "v0" ] ],
+    [ "esp:4", "r2:1", "red", [ "h0" ] ],
+    [ "r2:2", "led_red:A", "red", [ "h0" ] ],
+    [ "led_red:C", "esp:GND.2", "black", [ "v0" ] ],
+    [ "esp:5", "r3:1", "orange", [ "h0" ] ],
+    [ "r3:2", "led_orange:A", "orange", [ "h0" ] ],
+    [ "led_orange:C", "esp:GND.2", "black", [ "v0" ] ],
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ]
+  ],
+  "serialMonitor": {
+    "display": "auto",
+    "baudRate": 115200
+  },
+  "dependencies": {}
+}
